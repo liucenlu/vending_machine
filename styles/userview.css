@@ -1,0 +1,69 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+header {
+  text-align: left;
+  color: #000000;
+  background-color: #dc9988;
+}
+i{
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 15px;
+  font-size: 30px;
+}
+.container{
+  display: flex;  
+}
+.left{
+  background-color: #dc9988;
+  height: 90vh;
+  width: 15dvh;
+  top: 300px;
+  left: 0;
+  padding: 5px;
+  text-align: center;
+  margin-top: -21px;
+}
+nav ul{
+  display: flex;
+  list-style-type: none;
+  padding: 10px;
+  flex-direction:column;
+}
+nav a{
+  color: #310707;
+  text-decoration: none;
+  font-size: larger;
+}
+.log_out{
+  color:#950c0c;
+  margin-top: 90px;
+}
+nav ul li {
+  padding-bottom: 30px;
+}
+a:hover{
+  color: #ff0;
+}
+/* welcome-box样式 */
+div .welcome-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000000;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: STXingkai;
+  /* 设置边框属性 */
+  border: 3px solid #CCCCCC; /* 边框宽度为2像素，实线，颜色为灰色 */
+}
+
+.welcome-box p {
+  margin: 0;
+}
