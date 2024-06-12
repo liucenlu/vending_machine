@@ -3,7 +3,7 @@
 
 涉及工具：
 
-编辑器：VScode；前端开发：html，css，JavaScript；后端开发：php，mySQL
+编辑器：```VScode```；前端开发：```html，css，JavaScript```；后端开发：```php，mySQL```
 
 ## 系统需求
 
