@@ -37,7 +37,7 @@
 2. 接下来打开PHPMyAdmin，导入位于database/的.sql文件。这将在服务器上的数据库中生成表。
 3. 我创建的管理员用户有一个用户名 cen，账号是202212345，密码是 888888。（请在数据库中确认或手动创建一个。）
 4. 打开index/database.php文件并添加 PHPMyAdmin 的 ID 和密码的详细信息以访问你的数据库。
-5. 完成此操作后，转到您网站的 url（比如http://localhost/vending_machine/index/dw.html），系统应该已启动并运行。
+5. 完成此操作后，转到您网站的 url（比如```http://localhost/vending_machine/index/dw.html```，系统应该已启动并运行。
 
 ## 操作演示
 
