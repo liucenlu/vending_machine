@@ -129,16 +129,113 @@
         transform: scale(4);
         margin-top:60px;
     }
+    .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto;
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%; 
+            margin-left:500px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        #showModalBtn {
+            background: none;
+            border: none;
+            padding: 0;
+            font: inherit;
+            color: inherit;
+            cursor: pointer;
+        }
+        #myBtn{
+            background: none;
+            border: none;
+            padding: 0;
+            font: inherit;
+            color: inherit;
+            cursor: pointer;
+        }
     </style>
     <script src="../scripts/adminview.js"></script>
 <body>
     <div id="machineContainer"></div>
     <div id="addmachineContainer">
-        <button class="add" onclick="showPrompt()"><i class="fa-solid fa-plus"></i></button>
+        <button id="showModalBtn" class="add" onclick="showPrompt()"><i class="fa-solid fa-plus"></i></button>
+        <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>请输入以下信息:</p>
+            <label for="machineId">售卖机编号:</label>
+            <input type="text" id="machineId"><br><br>
+
+            <label for="location">位置:</label>
+            <input type="text" id="location"><br><br>
+
+            <label for="inventory">库存:</label>
+            <input type="text" id="inventory"><br><br>
+
+            <button id="submitBtn">添加</button>
+        </div>
+        </div>
     </div>
     <div id="drinkContainer"></div>
     <script>
         fetchMachines();
+    </script>
+    <script>
+        //添加售卖机的模态框
+        var modal = document.getElementById("modal");
+        var btn = document.getElementById("showModalBtn");
+
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+        modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+        modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        }
+        document.getElementById("submitBtn").addEventListener("click", function() {
+            let machineId = document.getElementById("machineId").value;
+            let location = document.getElementById("location").value;
+            let inventory = document.getElementById("inventory").value;
+
+            addMachine(machineId, location, inventory);
+
+            modal.style.display = "none";
+        });
     </script>
 </body>
 
