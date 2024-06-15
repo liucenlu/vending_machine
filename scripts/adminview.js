@@ -81,19 +81,147 @@ function showDetail(vendingMachine) {
                         `;
                         drinkContainer.appendChild(drinkDiv);
                     });
-                    const adddrinkDiv = document.createElement('div');
-                        adddrinkDiv.className = 'adddrink';
-                        adddrinkDiv.innerHTML = `
-                            <button class="add" onclick="showPrompt2()"><i class="fa-solid fa-plus" style="color: #66758f;"></i></i></button>
-                        `;
-                        drinkContainer.appendChild(adddrinkDiv);
-                } else {
+
+                    // 添加按钮和模态框
                     const adddrinkDiv = document.createElement('div');
                     adddrinkDiv.className = 'adddrink';
                     adddrinkDiv.innerHTML = `
-                        <button class="add" onclick="showPrompt2()"><i class="fa-solid fa-plus" style="color: #66758f;"></i></button>
+                        <button id="myBtn"><i class="fa-solid fa-plus" style="color: #66758f;"></i></button>
+                        <div id="myModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <p>请输入以下信息:</p>
+                                <label for="vendingMachineId">售卖机编号:</label>
+                                <input type="text" id="vendingMachineId"><br><br>
+
+                                <label for="drinkId">饮料编号:</label>
+                                <input type="text" id="drinkId"><br><br>
+
+                                <label for="name">名称:</label>
+                                <input type="text" id="name"><br><br>
+
+                                <label for="price">价格:</label>
+                                <input type="text" id="price"><br><br>
+
+                                <label for="shelfLife">保质期:</label>
+                                <input type="text" id="shelfLife"><br><br>
+
+                                <label for="productionDate">生产日期 (格式: YYYY-MM-DD):</label>
+                                <input type="text" id="productionDate"><br><br>
+
+                                <button id="submitBtn">添加</button>
+                            </div>
+                        </div>
                     `;
                     drinkContainer.appendChild(adddrinkDiv);
+
+                    // 获取模态框元素
+                    const modal = document.getElementById('myModal');
+                    const modalBtn = document.getElementById('myBtn');
+                    const closeBtn = document.getElementsByClassName('close')[0];
+
+                    // 点击按钮打开模态框
+                    modalBtn.onclick = function() {
+                        modal.style.display = 'block';
+                    }
+
+                    // 点击关闭按钮关闭模态框
+                    closeBtn.onclick = function() {
+                        modal.style.display = 'none';
+                    }
+
+                    // 点击模态框外部区域关闭模态框
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = 'none';
+                        }
+                    }
+
+                    // 处理表单提交
+                    document.getElementById('submitBtn').addEventListener('click', function() {
+                        let vendingMachineId = document.getElementById('vendingMachineId').value;
+                        let drinkId = document.getElementById('drinkId').value;
+                        let name = document.getElementById('name').value;
+                        let price = document.getElementById('price').value;
+                        let shelfLife = document.getElementById('shelfLife').value;
+                        let productionDate = document.getElementById('productionDate').value;
+
+                        addNewdrink(vendingMachineId, drinkId, name, price, shelfLife, productionDate);
+
+                        // 关闭模态框
+                        modal.style.display = 'none';
+                    });
+
+                } else {
+                    // 如果没有饮料，则显示添加按钮
+                    const adddrinkDiv = document.createElement('div');
+                    adddrinkDiv.className = 'adddrink';
+                    adddrinkDiv.innerHTML = `
+                        <button id="myBtn"><i class="fa-solid fa-plus" style="color: #66758f;"></i></button>
+                        <div id="myModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <p>请输入以下信息:</p>
+                                <label for="vendingMachineId">售卖机编号:</label>
+                                <input type="text" id="vendingMachineId"><br><br>
+
+                                <label for="drinkId">饮料编号:</label>
+                                <input type="text" id="drinkId"><br><br>
+
+                                <label for="name">名称:</label>
+                                <input type="text" id="name"><br><br>
+
+                                <label for="price">价格:</label>
+                                <input type="text" id="price"><br><br>
+
+                                <label for="shelfLife">保质期:</label>
+                                <input type="text" id="shelfLife"><br><br>
+
+                                <label for="productionDate">生产日期 (格式: YYYY-MM-DD):</label>
+                                <input type="text" id="productionDate"><br><br>
+
+                                <button id="submitBtn">添加</button>
+                            </div>
+                        </div>
+                    `;
+                    drinkContainer.appendChild(adddrinkDiv);
+
+                    // 获取模态框元素
+                    const modal = document.getElementById('myModal');
+                    const modalBtn = document.getElementById('myBtn');
+                    const closeBtn = document.getElementsByClassName('close')[0];
+
+                    // 点击按钮打开模态框
+                    modalBtn.onclick = function() {
+                        modal.style.display = 'block';
+                    }
+
+                    // 点击关闭按钮关闭模态框
+                    closeBtn.onclick = function() {
+                        modal.style.display = 'none';
+                    }
+
+                    // 点击模态框外部区域关闭模态框
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = 'none';
+                        }
+                    }
+
+                    // 处理表单提交
+                    document.getElementById('submitBtn').addEventListener('click', function() {
+                        let vendingMachineId = document.getElementById('vendingMachineId').value;
+                        let drinkId = document.getElementById('drinkId').value;
+                        let name = document.getElementById('name').value;
+                        let price = document.getElementById('price').value;
+                        let shelfLife = document.getElementById('shelfLife').value;
+                        let productionDate = document.getElementById('productionDate').value;
+
+                        addNewdrink(vendingMachineId, drinkId, name, price, shelfLife, productionDate);
+
+                        // 关闭模态框
+                        modal.style.display = 'none';
+                    });
                 }
             })
             .catch(error => {
@@ -103,7 +231,7 @@ function showDetail(vendingMachine) {
     } else {
         drinkContainer.innerHTML = '';
     }
-};
+}
 function addDrink(dID, vendingMachine) {
     // 弹出提示框，让用户输入补货数量
     const quantity = prompt('请输入补货数量：', '1');
@@ -151,18 +279,7 @@ function fetchSales() {
 
             // // 创建饮料销售数据的 HTML 内容
              if (data.drinks && data.drinks.length > 0) {
-            //     const drinkSalesDiv = document.createElement('div');
-            //     drinkSalesDiv.className = 'sales-section';
 
-            //     data.drinks.forEach(drink => {
-            //         const drinkDiv = document.createElement('div');
-            //         drinkDiv.className = 'drink-sale';
-            //         drinkSalesDiv.appendChild(drinkDiv);
-            //     });
-
-            //     salesContainer.appendChild(drinkSalesDiv);
-                
-                // 调用 createChart 函数生成饮料销售量条形图
                 const drinkLabels = data.drinks.map(drink => drink.name);
                 const drinkSalesData = data.drinks.map(drink => drink.total_sales);
                 createChart('drinkSalesChart', 'Drink Sales', drinkLabels, drinkSalesData);
@@ -172,18 +289,6 @@ function fetchSales() {
 
             // 创建售卖机销售数据的 HTML 内容
             if (data.machines && data.machines.length > 0) {
-                // const machineSalesDiv = document.createElement('div');
-                // machineSalesDiv.className = 'sales-section';
-
-                // data.machines.forEach(machine => {
-                //     const machineDiv = document.createElement('div');
-                //     machineDiv.className = 'machine-sale';
-                //     machineSalesDiv.appendChild(machineDiv);
-                // });
-
-                // salesContainer.appendChild(machineSalesDiv);
-                
-                // 调用 createChart 函数生成售卖机销售量条形图
                 const machineLabels = data.machines.map(machine => machine.vID);
                 const machineSalesData = data.machines.map(machine => machine.total_sales);
                 createChart('machineSalesChart', 'Machine Sales', machineLabels, machineSalesData);
@@ -251,47 +356,36 @@ function addMachine(machineId, location, inventory) {
     xhr.send(data);
 }
 
-function showPrompt2() {
-    let vendingMachineId = prompt("请输入售卖机编号:");
-    if (vendingMachineId === null) return;  // 用户点击取消
-
-    let drinkId = prompt("请输入饮料编号:");
-    if (drinkId === null) return;
-
-    let name = prompt("请输入名称:");
-    if (name === null) return;
-
-    let price = prompt("请输入价格:");
-    if (price === null) return;
-
-    let shelfLife = prompt("请输入保质期:");
-    if (shelfLife === null) return;
-
-    let productionDate = prompt("请输入生产日期 (格式: YYYY-MM-DD):");
-    if (productionDate === null) return;
-
-    addNewdrink(vendingMachineId, drinkId, name, price, shelfLife, productionDate);
-}
-
 function addNewdrink(vendingMachineId, drinkId, name, price, shelfLife, productionDate) {
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "addNewdrink.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText);
-            if (response.error) {
-                alert("错误: " + response.error);
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                // 处理服务器响应
+                const responseText = xhr.responseText;
+                if (responseText.includes("记录已存在")) {
+                    alert("该饮料已存在，不允许重复添加");
+                } else {
+                    try {
+                        const response = JSON.parse(responseText);
+                        if (response.error) {
+                            alert("错误: " + response.error);
+                        } else {
+                            alert("饮料添加成功!");
+                        }
+                    } catch (error) {
+                        alert("处理响应时出错: " + error.message);
+                    }
+                }
             } else {
-                alert("饮料添加成功!");
+                alert("添加失败: " + xhr.status);
             }
-        } else if (xhr.readyState === 4) {
-            alert("添加失败: " + xhr.status);
         }
     };
 
     const data = `vendingMachineId=${encodeURIComponent(vendingMachineId)}&drinkId=${encodeURIComponent(drinkId)}&name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&shelfLife=${encodeURIComponent(shelfLife)}&productionDate=${encodeURIComponent(productionDate)}`;
     xhr.send(data);
 }
-
