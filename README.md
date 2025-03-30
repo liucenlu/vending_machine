@@ -31,13 +31,17 @@
 
 ![image-20240611231800068](./%E9%A5%AE%E6%96%99%E8%87%AA%E5%8A%A8%E5%94%AE%E5%8D%96%E6%9C%BA%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20240611231800068-1718119081296-13.png)
 
-## 项目部署
+## 项目地址
 
-1. 要配置此 Web 应用程序，请确保服务器上安装了 PHP 和 PHPMyAdmin。
-2. 接下来打开PHPMyAdmin，导入位于database/的.sql文件。这将在服务器上的数据库中生成表。
-3. 我创建的管理员用户有一个用户名 cen，账号是202212345，密码是 888888。（请在数据库中确认或手动创建一个。）
-4. 打开index/database.php文件并添加 PHPMyAdmin 的 ID 和密码的详细信息以访问你的数据库。
-5. 完成此操作后，转到您网站的 url（比如```http://localhost/vending_machine/index/dw.html```，系统应该已启动并运行。
+http://8.130.35.239/vending_machine/index/dw.html
+
++ 管理员账号
+学号202212345
+密码888888
++ 用户账号之一
+学号202211111
+密码66666
+
 
 ## 操作演示
 
