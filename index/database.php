@@ -1,9 +1,9 @@
 <?php
 // database.php
-$host = 'localhost';
+$host = '';
 $db = 'vending_machine';
-$user = 'root';
-$pass = 'root';
+$user = '';
+$pass = '';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";//数据源名称
 $options = [//包含一些配置选项，比如错误处理模式和默认的获取模式
